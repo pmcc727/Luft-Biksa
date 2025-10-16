@@ -23,46 +23,65 @@
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       background: linear-gradient(180deg,var(--bg), #021226 120%);
       color:#eaf6ff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
       padding:32px;
     }
-
     .wrap{max-width:1180px;margin:0 auto;}
-
     header{
       display:flex;align-items:center;gap:20px;
       background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       padding:14px 18px;border-radius:12px;box-shadow: var(--card-shadow);
-      margin-bottom:28px;position:relative;backdrop-filter: blur(6px);
+      margin-bottom:28px;backdrop-filter: blur(6px);
     }
-    .brand{display:flex;align-items:center;gap:14px;flex:0 0 auto;}
+    .brand{display:flex;align-items:center;gap:14px;}
     .logo-wrap{width:64px;height:64px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,var(--navy-1),var(--navy-2));display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03);}
-    .logo-wrap img{width:100%;height:100%;object-fit:contain;display:block}
+    .logo-wrap img{width:100%;height:100%;object-fit:contain;}
     header h1{font-size:18px;margin:0}
     header .sub{font-size:13px;color:var(--muted)}
     nav{margin-left:auto;display:flex;gap:12px}
-    .nav-link{padding:8px 12px;border-radius:10px;background:transparent;color:var(--muted);text-decoration:none;font-weight:600}
+    .nav-link{padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600}
     .nav-link:hover{background:rgba(255,255,255,0.02);color:#fff}
 
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start;margin-bottom:22px;}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:22px;box-shadow:var(--card-shadow);border: 1px solid rgba(255,255,255,0.03);}
-    .hero .intro h2{margin:0 0 8px 0;font-size:28px}
-    .hero .intro p{margin:0;color:var(--muted)}
-    .cta-row{display:flex;gap:10px;margin-top:16px}
-    .btn{padding:10px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:700}
-    .btn-accent{background:linear-gradient(90deg,var(--accent),#66e0ff);color:#022}
+    .layout{
+      display:grid;
+      grid-template-columns:1fr 340px;
+      gap:24px;
+      align-items:start;
+    }
 
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-    .feature{padding:14px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.03)}
-    .feature h3{margin:0 0 6px 0;font-size:16px}
-    .feature p{margin:0;color:var(--muted);font-size:13px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--card-shadow);
+      border:1px solid rgba(255,255,255,0.03);
+    }
 
-    .panel{display:flex;flex-direction:column;gap:12px}
-    .mini{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .intro h2{margin:0 0 8px 0;font-size:28px}
+    .intro p{margin:0;color:var(--muted)}
 
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+    /* --- Aktualności --- */
+    .news{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .news h2{
+      margin-top:0;
+      margin-bottom:8px;
+      font-size:22px;
+    }
+    .news-item{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.05);
+      border-radius:12px;
+      padding:14px;
+      box-shadow: var(--card-shadow);
+    }
+    .news-item h4{margin:0 0 4px 0;font-size:16px}
+    .news-item .date{font-size:12px;color:var(--muted);margin-bottom:6px}
+    .news-item p{margin:0;font-size:14px;color:var(--muted)}
+
     .specs ul{padding-left:18px;margin:6px 0;color:var(--muted)}
     .team-member{display:flex;gap:12px;align-items:center}
     .avatar{width:56px;height:56px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#08305a,#0b2b55);display:flex;align-items:center;justify-content:center}
@@ -72,8 +91,16 @@
 
     footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
 
-    @media (max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.photo{flex:0 0 calc(50% - 5px)}}
-    @media (max-width:580px){body{padding:18px}.grid{grid-template-columns:1fr}.photo{flex:0 0 100%}header{flex-direction:column;align-items:flex-start;gap:12px}nav{margin-left:0}}
+    @media(max-width:900px){
+      .layout{grid-template-columns:1fr;}
+      .photo{flex:0 0 calc(50% - 5px)}
+    }
+    @media(max-width:580px){
+      body{padding:18px}
+      .photo{flex:0 0 100%}
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      nav{margin-left:0}
+    }
   </style>
 </head>
 <body>
@@ -85,102 +112,92 @@
         </div>
         <div>
           <h1>Projekt Luft-Biksa</h1>
-          <div class="sub">Mini-satelita badający temperaturę, ciśnienie i siłę pola magnetycznego ziemii </div>
+          <div class="sub">Mini-satelita badający temperaturę, ciśnienie i siłę pola magnetycznego ziemii</div>
         </div>
       </div>
 
       <nav>
         <a class="nav-link" href="#misja">Plan Misji</a>
-        <a class="nav-link" href="#specs">Specyfikacja Can Sata</a>
-        <a class="nav-link" href="#zespole">Nasz Team</a>
+        <a class="nav-link" href="#specs">Specyfikacja</a>
+        <a class="nav-link" href="#zespole">Zespół</a>
+        <a class="nav-link" href="#aktualnosci">Aktualności</a>
       </nav>
     </header>
 
-    <main>
-      <section class="hero">
+    <main class="layout">
+      <!-- Lewa kolumna - główna treść -->
+      <section>
         <div class="card intro">
           <h2>Czym jest CanSat?</h2>
-          <p>CanSat to wyzwanie polegające na skonstruowaniu przez drużynę satelity w formie puszki. Zadaniem takiego CanSata ma być zmierzenie temperatury zewnętrznej, ciśnienia oraz wykonanie dowolnego eksperymentu wybranego przez zespół.</p>
-
-          <div class="grid" style="margin-top:18px">
-            <div class="feature">
-              <h3>Eksperyment 1</h3>
-              <p>Krótka nota o pierwszym eksperymencie — np. pomiar temperatury, ciśnienia.</p>
-            </div>
-            <div class="feature">
-              <h3>Eksperyment 2</h3>
-              <p>Opis drugiego eksperymentu lub czujnika — telemetryka, kamera, itp.</p>
-            </div>
-            <div class="feature">
-              <h3>Integracja</h3>
-              <p>Informacje o platformie, zasilaniu i komunikacji.</p>
-            </div>
-          </div>
+          <p>CanSat to wyzwanie, w którym drużyna konstruuje mini-satelitę w formie puszki. Urządzenie mierzy warunki atmosferyczne i przeprowadza autorski eksperyment naukowy podczas lotu.</p>
         </div>
 
-        <aside class="panel" aria-label="panel boczny">
-          <div class="mini card">
-            <h4>Aktualności</h4>
-            <p class="sub" style="margin:0">Tutaj dodawaj krótkie aktualizacje postępów — testy, starty, ważne terminy.</p>
-          </div>
-
-          <div class="mini card">
-            <h4>Szybkie Linki</h4>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-              <a class="nav-link" href="#">Harmonogram</a>
-              <a class="nav-link" href="#">Materiały</a>
-              <a class="nav-link" href="#">Kontakt</a>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section class="two-col">
-        <div class="card specs" id="specs">
+        <div class="card specs" id="specs" style="margin-top:20px;">
           <h3>Specyfikacja techniczna</h3>
-          <p class="sub">Krótka lista komponentów i parametrów.</p>
           <ul>
-            <li>Rozmiar: 10 × 10 × 20 cm (przykład)</li>
+            <li>Rozmiar: 10 × 10 × 20 cm</li>
             <li>Akumulator: LiPo 3.7V</li>
-            <li>Czujniki: barometr, termometr, akcelerometr</li>
-            <li>Komunikacja: LoRa / RF / telemetry</li>
+            <li>Czujniki: barometr, termometr, magnetometr</li>
+            <li>Komunikacja: LoRa / RF</li>
           </ul>
         </div>
 
-        <div class="card" id="zespole">
+        <div class="card" id="zespole" style="margin-top:20px;">
           <h3>Zespół</h3>
           <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
             <div class="team-member">
               <div class="avatar">A</div>
               <div>
                 <div style="font-weight:700">Imię Nazwisko</div>
-                <div class="sub">Rola — np. Elektronika / Oprogramowanie</div>
+                <div class="sub">Elektronika / Oprogramowanie</div>
               </div>
             </div>
             <div class="team-member">
               <div class="avatar">B</div>
               <div>
                 <div style="font-weight:700">Imię Nazwisko</div>
-                <div class="sub">Rola — Mechanika / Integracja</div>
+                <div class="sub">Mechanika / Integracja</div>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <section style="margin-top:18px" class="card">
-        <h3>Galeria</h3>
-        <div class="gallery" style="margin-top:10px">
-          <div class="photo">Zdjęcie 1</div>
-          <div class="photo">Zdjęcie 2</div>
-          <div class="photo">Zdjęcie 3</div>
+        <div class="card" style="margin-top:20px;">
+          <h3>Galeria</h3>
+          <div class="gallery" style="margin-top:10px">
+            <div class="photo">Zdjęcie 1</div>
+            <div class="photo">Zdjęcie 2</div>
+            <div class="photo">Zdjęcie 3</div>
+          </div>
         </div>
       </section>
 
+      <!-- Prawa kolumna - Aktualności -->
+      <aside class="card news" id="aktualnosci">
+        <h2>Aktualności</h2>
+
+        <div class="news-item">
+          <h4>Test komunikacji LoRa</h4>
+          <div class="date">12 października 2025</div>
+          <p>Przeprowadziliśmy udane testy łączności LoRa na dystansie 2 km. Dane telemetryczne odbierane poprawnie.</p>
+        </div>
+
+        <div class="news-item">
+          <h4>Montaż czujników</h4>
+          <div class="date">5 października 2025</div>
+          <p>Zespół ukończył montaż modułu czujników temperatury i ciśnienia. Następny etap: testy integracyjne.</p>
+        </div>
+
+        <div class="news-item">
+          <h4>Start projektu</h4>
+          <div class="date">20 września 2025</div>
+          <p>Rozpoczęliśmy prace nad projektem CanSat Luft-Biksa! Celem jest pomiar temperatury, ciśnienia i pola magnetycznego.</p>
+        </div>
+      </aside>
     </main>
 
     <footer>
-      © <span id="year"></span> Zespół CanSat — Wszystkie prawa zastrzeżone
+      © <span id="year"></span> Zespół Luft-Biksa — Wszystkie prawa zastrzeżone
     </footer>
   </div>
 
