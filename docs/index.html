@@ -4,9 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projekt Luft-Biksa</title>
+  <link rel="icon" type="image/png" href="./logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
+    :root {
       --bg:#041328;
       --navy-1:#071a3f;
       --navy-2:#0b2b55;
@@ -16,9 +17,9 @@
       --card-shadow: 0 8px 30px rgba(2,6,23,0.6);
       --radius: 16px;
     }
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;scroll-behavior:smooth}
     html,body{height:100%}
-    body{
+    body {
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       background: linear-gradient(180deg,var(--bg), #021226 120%);
@@ -32,6 +33,7 @@
       background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       padding:14px 18px;border-radius:12px;box-shadow: var(--card-shadow);
       margin-bottom:28px;backdrop-filter: blur(6px);
+      position:sticky;top:10px;z-index:100;
     }
     .brand{display:flex;align-items:center;gap:14px;}
     .logo-wrap{width:64px;height:64px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,var(--navy-1),var(--navy-2));display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03);}
@@ -39,8 +41,16 @@
     header h1{font-size:18px;margin:0}
     header .sub{font-size:13px;color:var(--muted)}
     nav{margin-left:auto;display:flex;gap:12px}
-    .nav-link{padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600}
-    .nav-link:hover{background:rgba(255,255,255,0.02);color:#fff}
+    .nav-link{
+      padding:8px 12px;border-radius:10px;
+      color:var(--muted);text-decoration:none;font-weight:600;
+      transition:0.3s;
+    }
+    .nav-link:hover{
+      background:rgba(255,255,255,0.05);
+      color:#fff;
+      transform:translateY(-1px);
+    }
 
     .layout{
       display:grid;
@@ -66,11 +76,7 @@
       flex-direction:column;
       gap:12px;
     }
-    .news h2{
-      margin-top:0;
-      margin-bottom:8px;
-      font-size:22px;
-    }
+    .news h2{margin-top:0;margin-bottom:8px;font-size:22px;}
     .news-item{
       background:var(--glass);
       border:1px solid rgba(255,255,255,0.05);
@@ -86,20 +92,60 @@
     .team-member{display:flex;gap:12px;align-items:center}
     .avatar{width:56px;height:56px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#08305a,#0b2b55);display:flex;align-items:center;justify-content:center}
 
-    .gallery{display:flex;gap:10px;flex-wrap:wrap}
-    .photo{flex:0 0 calc(33.333% - 6.66px);height:120px;border-radius:10px;overflow:hidden;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+    /* --- Galeria --- */
+    .gallery{
+      display:flex;gap:10px;flex-wrap:wrap;
+    }
+    .gallery img{
+      flex:0 0 calc(33.333% - 6.66px);
+      height:120px;
+      border-radius:10px;
+      object-fit:cover;
+      cursor:pointer;
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover{
+      transform:scale(1.05);
+      box-shadow:0 0 10px rgba(0,180,216,0.5);
+    }
+
+    /* --- Lightbox --- */
+    .lightbox {
+      display:none;
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.9);
+      justify-content:center;
+      align-items:center;
+      z-index:200;
+    }
+    .lightbox img{
+      max-width:90%;
+      max-height:90%;
+      border-radius:12px;
+      box-shadow:0 0 20px rgba(0,0,0,0.8);
+    }
+    .lightbox.active{display:flex;}
+    .lightbox:after{
+      content:"×";
+      position:absolute;
+      top:20px;right:30px;
+      color:white;
+      font-size:36px;
+      cursor:pointer;
+    }
 
     footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
 
     @media(max-width:900px){
       .layout{grid-template-columns:1fr;}
-      .photo{flex:0 0 calc(50% - 5px)}
+      .gallery img{flex:0 0 calc(50% - 5px)}
     }
     @media(max-width:580px){
       body{padding:18px}
-      .photo{flex:0 0 100%}
       header{flex-direction:column;align-items:flex-start;gap:12px}
       nav{margin-left:0}
+      .gallery img{flex:0 0 100%}
     }
   </style>
 </head>
@@ -107,8 +153,7 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo-wrap">
-          <img src="./logo.svg" alt="Logo projektu"/>        </div>
+        <div class="logo-wrap"><img src="./logo.svg" alt="Logo projektu"/></div>
         <div>
           <h1>Projekt Luft-Biksa</h1>
           <div class="sub">Mini-satelita badający temperaturę, ciśnienie i siłę pola magnetycznego ziemii</div>
@@ -116,7 +161,7 @@
       </div>
 
       <nav>
-        <a class="nav-link" href="#Misja">Plan Misji</a>
+        <a class="nav-link" href="#misja">Plan Misji</a>
         <a class="nav-link" href="#specs">Specyfikacja</a>
         <a class="nav-link" href="#zespole">Zespół</a>
         <a class="nav-link" href="#galeria">Galeria</a>
@@ -126,7 +171,7 @@
     <main class="layout">
       <!-- Lewa kolumna - główna treść -->
       <section>
-        <div class="card intro">
+        <div class="card intro" id="misja">
           <h2>Czym jest CanSat?</h2>
           <p>CanSat to wyzwanie, w którym drużyna konstruuje mini-satelitę w formie puszki. Urządzenie mierzy warunki atmosferyczne i przeprowadza autorski eksperyment naukowy podczas lotu.</p>
         </div>
@@ -140,7 +185,6 @@
           <h3>Specyfikacja techniczna</h3>
           <ul>
             <li>Już wkrótce!</li>
-            
           </ul>
         </div>
 
@@ -148,56 +192,21 @@
           <h3>Team Luft-Biksa</h3>
           <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
             <div class="team-member">
-              <div class="avatar">AG</div>
-              <div>
-                <div style="font-weight:700">Aleksandra Grzyb</div>
-                <div class="sub">Liderka Zespołu</div>
-              </div>
+              <div class="avatar">AG</div><div><div style="font-weight:700">Aleksandra Grzyb</div><div class="sub">Liderka Zespołu</div></div>
             </div>
-            <div class="team-member">
-              <div class="avatar">DG</div>
-              <div>
-                <div style="font-weight:700">Dawid Gut</div>
-                <div class="sub">-</div>
-              </div>
-            </div>
-            <div class="team-member">
-              <div class="avatar">-</div>
-              <div>
-                <div style="font-weight:700">Bartosz</div>
-                <div class="sub">-</div>
-              </div>
-            </div>
-            <div class="team-member">
-              <div class="avatar">AB</div>
-              <div>
-                <div style="font-weight:700">Aleksander Biegonek</div>
-                <div class="sub">Programista</div>
-              </div>
-            </div>
-            <div class="team-member">
-              <div class="avatar">PM</div>
-              <div>
-                <div style="font-weight:700">Piotr Morgalla</div>
-                <div class="sub">Łączność radiowa z satelitą</div>
-              </div>
-            </div>
-            <div class="team-member">
-              <div class="avatar">NP</div>
-              <div>
-                <div style="font-weight:700">Nataniel Piechaczek</div>
-                <div class="sub">-</div>
-              </div>
-            </div>
+            <div class="team-member"><div class="avatar">DG</div><div><div style="font-weight:700">Dawid Gut</div><div class="sub">-</div></div></div>
+            <div class="team-member"><div class="avatar">B</div><div><div style="font-weight:700">Bartosz</div><div class="sub">-</div></div></div>
+            <div class="team-member"><div class="avatar">AB</div><div><div style="font-weight:700">Aleksander Biegonek</div><div class="sub">Programista</div></div></div>
+            <div class="team-member"><div class="avatar">PM</div><div><div style="font-weight:700">Piotr Morgalla</div><div class="sub">Łączność radiowa</div></div></div>
+            <div class="team-member"><div class="avatar">NP</div><div><div style="font-weight:700">Nataniel Piechaczek</div><div class="sub">-</div></div></div>
           </div>
         </div>
 
-        <div class="card" style="margin-top:20px;">
+        <div class="card" id="galeria" style="margin-top:20px;">
           <h3>Galeria</h3>
           <div class="gallery" style="margin-top:10px">
-            <div class="photo"><img src="./logo.svg" alt="Logo projektu"/></div>
-            <div class="photo">Zdjęcie 2</div>
-            <div class="photo">Zdjęcie 3</div>
+            <!-- Wystarczy dodać nowe <img src="ścieżka.jpg" alt="opis"> -->
+            <img src="./logo.svg" alt="Logo projektu">
           </div>
         </div>
       </section>
@@ -205,7 +214,6 @@
       <!-- Prawa kolumna - Aktualności -->
       <aside class="card news" id="aktualnosci">
         <h2>Aktualności</h2>
-
         <div class="news-item">
           <h4>Start projektu</h4>
           <div class="date">20 września 2025</div>
@@ -219,8 +227,28 @@
     </footer>
   </div>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox"></div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightbox gallery
+    const lightbox = document.getElementById('lightbox');
+    const images = document.querySelectorAll('.gallery img');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target !== lightbox.querySelector('img')) {
+        lightbox.classList.remove('active');
+      }
+    });
   </script>
 </body>
 </html>
