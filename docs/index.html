@@ -18,6 +18,15 @@
       --radius: 16px;
     }
     *{box-sizing:border-box;scroll-behavior:smooth}
+    
+    /* Zapobiega zasłanianiu sekcji przez sticky header przy scrollowaniu */
+#misja,
+#specs,
+#zespole,
+#galeria {
+  scroll-margin-top: 90px; /* dopasuj do wysokości headera */
+}
+    
     html,body{height:100%}
     body {
       margin:0;
