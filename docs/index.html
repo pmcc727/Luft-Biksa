@@ -18,14 +18,6 @@
       --radius: 16px;
     }
     *{box-sizing:border-box;scroll-behavior:smooth}
-    
-#misja,
-#specs,
-#zespole,
-#galeria {
-  scroll-margin-top: 110px; 
-}
-    
     html,body{height:100%}
     body {
       margin:0;
@@ -48,7 +40,7 @@
     .logo-wrap img{width:100%;height:100%;object-fit:contain;}
     header h1{font-size:18px;margin:0}
     header .sub{font-size:13px;color:var(--muted)}
-    nav{margin-left:auto;display:flex;gap:12px}
+    nav{margin-left:auto;display:flex;gap:12px;align-items:center}
     .nav-link{
       padding:8px 12px;border-radius:10px;
       color:var(--muted);text-decoration:none;font-weight:600;
@@ -59,14 +51,24 @@
       color:#fff;
       transform:translateY(-1px);
     }
-
-    .layout{
-      display:grid;
-      grid-template-columns:1fr 340px;
-      gap:24px;
-      align-items:start;
+    .lang-btn {
+      display:flex;
+      align-items:center;
+      gap:6px;
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.08);
+      color:#fff;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+      transition:0.3s;
     }
-
+    .lang-btn:hover {
+      background:rgba(255,255,255,0.08);
+      transform:translateY(-1px);
+    }
+    .layout{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start;}
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border-radius:var(--radius);
@@ -74,16 +76,9 @@
       box-shadow:var(--card-shadow);
       border:1px solid rgba(255,255,255,0.03);
     }
-
     .intro h2{margin:0 0 8px 0;font-size:28px}
     .intro p{margin:0;color:var(--muted)}
-
-    /* --- Aktualności --- */
-    .news{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
+    .news{display:flex;flex-direction:column;gap:12px;}
     .news h2{margin-top:0;margin-bottom:8px;font-size:22px;}
     .news-item{
       background:var(--glass);
@@ -95,66 +90,19 @@
     .news-item h4{margin:0 0 4px 0;font-size:16px}
     .news-item .date{font-size:12px;color:var(--muted);margin-bottom:6px}
     .news-item p{margin:0;font-size:14px;color:var(--muted)}
-
     .specs ul{padding-left:18px;margin:6px 0;color:var(--muted)}
     .team-member{display:flex;gap:12px;align-items:center}
     .avatar{width:56px;height:56px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#08305a,#0b2b55);display:flex;align-items:center;justify-content:center}
-    
-    /* --- Galeria --- */
-    .gallery{
-      display:flex;gap:10px;flex-wrap:wrap;
-    }
-    .gallery img{
-      flex:0 0 calc(33.333% - 6.66px);
-      height:120px;
-      border-radius:10px;
-      object-fit:cover;
-      cursor:pointer;
-      transition:transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .gallery img:hover{
-      transform:scale(1.05);
-      box-shadow:0 0 10px rgba(0,180,216,0.5);
-    }
-
-    /* --- Lightbox --- */
-    .lightbox {
-      display:none;
-      position:fixed;
-      top:0;left:0;width:100%;height:100%;
-      background:rgba(0,0,0,0.9);
-      justify-content:center;
-      align-items:center;
-      z-index:200;
-    }
-    .lightbox img{
-      max-width:90%;
-      max-height:90%;
-      border-radius:12px;
-      box-shadow:0 0 20px rgba(0,0,0,0.8);
-    }
+    .gallery{display:flex;gap:10px;flex-wrap:wrap;}
+    .gallery img{flex:0 0 calc(33.333% - 6.66px);height:120px;border-radius:10px;object-fit:cover;cursor:pointer;transition:transform 0.3s ease, box-shadow 0.3s ease;}
+    .gallery img:hover{transform:scale(1.05);box-shadow:0 0 10px rgba(0,180,216,0.5);}
+    .lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:200;}
+    .lightbox img{max-width:90%;max-height:90%;border-radius:12px;box-shadow:0 0 20px rgba(0,0,0,0.8);}
     .lightbox.active{display:flex;}
-    .lightbox:after{
-      content:"×";
-      position:absolute;
-      top:20px;right:30px;
-      color:white;
-      font-size:36px;
-      cursor:pointer;
-    }
-
+    .lightbox:after{content:"×";position:absolute;top:20px;right:30px;color:white;font-size:36px;cursor:pointer;}
     footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
-
-    @media(max-width:900px){
-      .layout{grid-template-columns:1fr;}
-      .gallery img{flex:0 0 calc(50% - 5px)}
-    }
-    @media(max-width:580px){
-      body{padding:18px}
-      header{flex-direction:column;align-items:flex-start;gap:12px}
-      nav{margin-left:0}
-      .gallery img{flex:0 0 100%}
-    }
+    @media(max-width:900px){.layout{grid-template-columns:1fr;}.gallery img{flex:0 0 calc(50% - 5px)}}
+    @media(max-width:580px){body{padding:18px}header{flex-direction:column;align-items:flex-start;gap:12px}nav{margin-left:0}.gallery img{flex:0 0 100%}}
   </style>
 </head>
 <body>
@@ -163,100 +111,133 @@
       <div class="brand">
         <div class="logo-wrap"><img src="./logo.svg" alt="Logo projektu"/></div>
         <div>
-          <h1>Projekt Luft-Biksa</h1>
-          <div class="sub">Mini-satelita badający temperaturę, ciśnienie i siłę pola magnetycznego ziemii</div>
+          <h1 id="headerTitle">Projekt Luft-Biksa</h1>
+          <div class="sub" id="headerSubtitle">Mini-satelita badający temperaturę, ciśnienie i siłę pola magnetycznego Ziemi</div>
         </div>
       </div>
-
       <nav>
-        <a class="nav-link" href="#misja">Plan Misji</a>
-        <a class="nav-link" href="#specs">Specyfikacja</a>
-        <a class="nav-link" href="#zespole">Zespół</a>
-        <a class="nav-link" href="#galeria">Galeria</a>
+        <button class="lang-btn" id="langToggle"><span>🌍</span> EN</button>
       </nav>
     </header>
 
-    <main class="layout">
-      <!-- Lewa kolumna - główna treść -->
+    <main class="layout" id="content">
       <section>
         <div class="card intro">
-          <h2>Czym jest CanSat?</h2>
-          <p>CanSat to wyzwanie, w którym drużyna konstruuje mini-satelitę w środku puszki wielkości tej po napoju. Urządzenie wynoszone jest rakietą na ok. 2km i opadając mierzy warunki atmosferyczne takie jak: temperatura oraz ciśnienie, a także przeprowadza autorski eksperyment podczas lotu. Wszystko musi zmieścić się w podanych wymiarach, a głównym celem tego projektu jest połączenie sił uczestników o różnych zainteresowaniach! Po więcej dokładniejszych informacji serdecznie zapraszamy na <a href="https://esero.kopernik.org.pl/konkurs-cansat/">oficjalną stronę</a> wyzwania.</p>
+          <h2 id="introTitle">Czym jest CanSat?</h2>
+          <p id="introText">CanSat to wyzwanie, w którym drużyna konstruuje mini-satelitę w środku puszki wielkości tej po napoju. Urządzenie wynoszone jest rakietą na ok. 2 km i opadając mierzy warunki atmosferyczne takie jak: temperatura oraz ciśnienie, a także przeprowadza autorski eksperyment podczas lotu. Wszystko musi zmieścić się w podanych wymiarach, a głównym celem projektu jest połączenie sił uczestników o różnych zainteresowaniach! Po więcej dokładniejszych informacji zapraszamy na <a href="https://esero.kopernik.org.pl/konkurs-cansat/">oficjalną stronę</a> wyzwania.</p>
         </div>
         <br>
-        <div class="card about" id="misja">
-          <h2>Plan Misji</h2>
-          <p>Celem podstawowym misji jest zbadanie temperatury i ciśnienia na zewnątrz CanSata, podczas lotu. Misją dodatkową, którą zrealizujemy, będzie pomiar siły pola magnetycznego Ziemii za pomocą obrotu naszej “mini-satelity” z cewką umieszczoną w środku. Wyindukowane napięcie posłuży nam do określenia siły pola magnetycznego.</p>
+        <div class="card intro" id="misja">
+          <h2 id="missionTitle">Plan Misji</h2>
+          <p id="missionText">Celem podstawowym misji jest zbadanie temperatury i ciśnienia na zewnątrz CanSata podczas lotu. Misją dodatkową będzie pomiar siły pola magnetycznego Ziemi za pomocą obrotu naszej „mini-satelity” z cewką umieszczoną w środku. Wyindukowane napięcie posłuży do określenia siły pola magnetycznego.</p>
         </div>
 
         <div class="card specs" id="specs" style="margin-top:20px;">
-          <h3>Specyfikacja techniczna Luft-Biksy</h3>
-          <ul>
-            <li>Już wkrótce!</li>
-          </ul>
+          <h3 id="specsTitle">Specyfikacja techniczna Luft-Biksy</h3>
+          <ul id="specsList">Już wkrótce!</ul>
         </div>
 
         <div class="card" id="zespole" style="margin-top:20px;">
-          <h3>Team Luft-Biksa</h3>
+          <h3 id="teamTitle">Team Luft-Biksa</h3>
           <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
-            <div class="team-member">
-            <div class="avatar">AG</div><div><div style="font-weight:700">Aleksandra Grzyb</div><div class="sub">Liderka Zespołu</div></div>
-          </div>
-            <div class="team-member"><div class="avatar">DG</div><div><div style="font-weight:700">Dawid Gut</div><div class="sub">Druk 3D</div></div></div>
-            <div class="team-member"><div class="avatar">BD</div><div><div style="font-weight:700">Bartosz Dudek</div><div class="sub">Programowanie mikroprocesorów i Modelowanie 3D</div></div></div>
-            <div class="team-member"><div class="avatar">AB</div><div><div style="font-weight:700">Aleksander Biegonek</div><div class="sub">Programista</div></div></div>
-            <div class="team-member"><div class="avatar">PM</div><div><div style="font-weight:700">Piotr Morgalla</div><div class="sub">Łączność radiowa</div></div></div>
-            <div class="team-member"><div class="avatar">NP</div><div><div style="font-weight:700">Nataniel Piechaczek</div><div class="sub">Zarządzanie mediami społecznościowymi</div></div></div>
+            <div class="team-member"><div class="avatar">AG</div><div><div style="font-weight:700">-</div><div class="sub" id="subAG" >Liderka Zespołu</div></div></div>
+            <div class="team-member"><div class="avatar">DG</div><div><div style="font-weight:700">-</div><div class="sub" id="subDG">Druk 3D</div></div></div>
+            <div class="team-member"><div class="avatar">BD</div><div><div style="font-weight:700">-</div><div class="sub" id="subBD">Programowanie mikroprocesorów i Modelowanie 3D</div></div></div>
+            <div class="team-member"><div class="avatar">AB</div><div><div style="font-weight:700">-</div><div class="sub" id="subAB">Programista</div></div></div>
+            <div class="team-member"><div class="avatar">PM</div><div><div style="font-weight:700">-</div><div class="sub" id="subPM">Łączność radiowa</div></div></div>
+            <div class="team-member"><div class="avatar">NP</div><div><div style="font-weight:700">-</div><div class="sub" id="subNP">Zarządzanie mediami społecznościowymi</div></div></div>
           </div>
         </div>
 
         <div class="card" id="galeria" style="margin-top:20px;">
-          <h3>Galeria</h3>
+          <h3 id="galleryTitle">Galeria</h3>
           <div class="gallery" style="margin-top:10px">
-            <!-- Wystarczy dodać nowe <img src="ścieżka.jpg" alt="opis"> -->
             <img src="./logo.svg" alt="Logo projektu">
           </div>
         </div>
       </section>
 
-      <!-- Prawa kolumna - Aktualności -->
       <aside class="card news" id="aktualnosci">
-        <h2>Aktualności</h2>
+        <h2 id="newsTitle">Aktualności</h2>
         <div class="news-item">
-          <h4>Start projektu</h4>
-          <div class="date">25 września 2025</div>
-          <p>Rozpoczęliśmy prace nad projektem CanSat Luft-Biksa! Celem jest pomiar temperatury, ciśnienia i pola magnetycznego.</p>
+          <h4 id="StartNews">Start projektu</h4>
+          <div class="date" id="StartDate">25 września 2025</div>
+          <p id="newsItemText">Rozpoczęliśmy prace nad projektem CanSat Luft-Biksa! Celem jest pomiar temperatury, ciśnienia i pola magnetycznego.</p>
         </div>
       </aside>
     </main>
 
-    <footer>
+    <footer id="footerText">
       © <span id="year"></span> Zespół Luft-Biksa — Wszystkie prawa zastrzeżone
     </footer>
   </div>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox"></div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Lightbox gallery
+    // Lightbox
     const lightbox = document.getElementById('lightbox');
-    const images = document.querySelectorAll('.gallery img');
-
-    images.forEach(img => {
+    document.querySelectorAll('.gallery img').forEach(img => {
       img.addEventListener('click', () => {
         lightbox.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
         lightbox.classList.add('active');
       });
     });
-
     lightbox.addEventListener('click', e => {
-      if (e.target !== lightbox.querySelector('img')) {
-        lightbox.classList.remove('active');
-      }
+      if (e.target !== lightbox.querySelector('img')) lightbox.classList.remove('active');
     });
+
+    // Tłumaczenia EN
+    const translations = {
+      headerTitle: "Luft-Biksa Project",
+      headerSubtitle: "A mini-satellite measuring temperature, pressure, and Earth's magnetic field strength",
+      introTitle: "What is a CanSat?",
+      introText: "CanSat is a challenge where a team builds a mini-satellite inside a soda can. The device is launched by rocket to about 2 km and measures atmospheric conditions such as temperature and pressure while performing an original experiment during descent. The goal is teamwork between participants with diverse skills! More info on the <a href='https://esero.kopernik.org.pl/konkurs-cansat/'>official site</a>.",
+      missionTitle: "Mission Plan",
+      missionText: "The main goal is to measure temperature and pressure outside the CanSat during flight. Additionally, we will measure Earth's magnetic field using a rotating coil inside Luft-Biksa. The induced voltage will help determine the Earth's magnetic field strength.",
+      specsTitle: "Technical specifications of Luft-Biksa",
+      specsList: "Coming soon!",
+      teamTitle: "Team Luft-Biksa",
+      subAG: "Team leader",
+      subDG: "3D Printing",
+      subBD: "Microprocessors programming and 3D Modeling",
+      subAB: "Programmer",
+      subPM: "Radio comunication",
+      subNP: "Social Media management",
+      galleryTitle: "Gallery",
+      newsTitle: "News",
+      StartNews: "Project Launch",
+      StartDate: "25 September 2025",
+      newsItemText: "We’ve started work on the Luft-Biksa CanSat project! The goal is to measure temperature, pressure, and Earth's magnetic field strength.",
+      footerText: "© " + new Date().getFullYear() + " Luft-Biksa Team — All rights reserved"
+    };
+
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = 'pl';
+
+    function switchToEnglish() {
+      document.querySelector('html').lang = 'en';
+      document.title = "Luft-Biksa Project";
+      for (const [key, value] of Object.entries(translations)) {
+        const el = document.getElementById(key);
+        if (el) el.innerHTML = value;
+      }
+      langToggle.innerHTML = "<span>🌍</span> PL";
+      currentLang = 'en';
+    }
+
+    function switchToPolish() { location.reload(); }
+
+    langToggle.addEventListener('click', () => {
+      if (currentLang === 'pl') switchToEnglish();
+      else switchToPolish();
+    });
+
+    // Automatyczne wykrywanie języka
+    const userLang = navigator.language || navigator.userLanguage;
+    if (!userLang.startsWith('pl')) switchToEnglish();
   </script>
 </body>
 </html>
