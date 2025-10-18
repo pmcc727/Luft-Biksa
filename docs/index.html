@@ -134,7 +134,16 @@
 
         <div class="card specs" id="specs" style="margin-top:20px;">
           <h3 id="specsTitle">Specyfikacja techniczna Luft-Biksy</h3>
-          <ul id="specsList">Już wkrótce!</ul>
+          <ul id="specsList1"><li>Dla misji podstawowej w naszym CanSacie wykorzystamy:</li></ul>
+          <ul id="specsList2"><B>Mikrokontroler ESP32</B> jako komputer pokładowy.</ul>
+          <ul id="specsList3"><B>BMP280</B> - precyzyjny czujnik mierzący ciśnienie i temperaturę.</ul>
+          <ul id="specsList4"><B>Moduł karty SD</B> odpowiedzialny za zapis danych na nośnik.</ul>
+          <ul id="specsList5"><B>Moduł LoRa SX1278</B> - umożliwi komunikację między CanSatem a stacją naziemną.</ul>
+          <br>
+          <ul id="specsList6"><li>Dla misji dodatkowej:</li></ul>
+          <ul id="specsList7"><B>Sensor GY-87 (HW-290)</B> posiada wbudowany akcelelometr, żyroskop, magnetometr i barometr. Wykorzystamy go do pomiaru przyśpieszenia, prędkości kątowej i siły pola magnetycznego.</ul>
+          <ul id="specsList8"><B>Miedziana Cewka (Sensor Indukcyjny)</B> zostanie wykorzystana do detekcji wyindukowanego napięcia, przez Ziemskie pole magnetyczne podczas ruchu CanSata. </ul>
+          <ul id="specsList9"><B>ADS1115 (Opcjonalny)</B> to wysokiej rozdzielczości przetwornik analogowo cyfrowy, który wykorzystamy jeśli wewnętrzny przetwornik w ESP32 będzie miał zbyt mały zakres. Moduł ten będzie mierzył indukowane napięcie w cewce.</ul>
         </div>
 
         <div class="card" id="zespole" style="margin-top:20px;">
@@ -158,12 +167,21 @@
       </section>
 
       <aside class="card news" id="aktualnosci">
-        <h2 id="newsTitle">Aktualności</h2>
+         <h2 id="newsTitle">Aktualności</h2>
+        
+        <div class="news-item">
+          <h4 id="Test1News">Test misji podstawowej</h4>
+          <div class="date" id="Test1Date">7 październik 2025</div>
+          <p id="newsTest1Text">Przeprowadziliśmy pierwszy udany test misji podstawowej.</p>
+        </div>
+        
+       
         <div class="news-item">
           <h4 id="StartNews">Start projektu</h4>
-          <div class="date" id="StartDate">25 września 2025</div>
-          <p id="newsItemText">Rozpoczęliśmy prace nad projektem CanSat Luft-Biksa! Celem jest pomiar temperatury, ciśnienia i pola magnetycznego.</p>
+          <div class="date" id="StartDate1">25 września 2025</div>
+          <p id="newsStartText">Rozpoczęliśmy prace nad projektem CanSat Luft-Biksa! Celem jest pomiar temperatury, ciśnienia i pola magnetycznego.</p>
         </div>
+        
       </aside>
     </main>
 
@@ -193,12 +211,24 @@
     const translations = {
       headerTitle: "Luft-Biksa Project",
       headerSubtitle: "A mini-satellite measuring temperature, pressure, and Earth's magnetic field strength",
+      
       introTitle: "What is a CanSat?",
       introText: "CanSat is a challenge where a team builds a mini-satellite inside a soda can. The device is launched by rocket to about 2 km and measures atmospheric conditions such as temperature and pressure while performing an original experiment during descent. The goal is teamwork between participants with diverse skills! More info on the <a href='https://esero.kopernik.org.pl/konkurs-cansat/'>official site</a>.",
+      
       missionTitle: "Mission Plan",
       missionText: "The main goal is to measure temperature and pressure outside the CanSat during flight. Additionally, we will measure Earth's magnetic field using a rotating coil inside Luft-Biksa. The induced voltage will help determine the Earth's magnetic field strength.",
+      
       specsTitle: "Technical specifications of Luft-Biksa",
-      specsList: "Coming soon!",
+      specsList1: "<li>For the primary mission, we will use:</li>",
+      specsList2: "<b>The ESP32 microcontroller</b> serves as the main onboard computer of the CanSat.",
+      specsList3: "<b>The BMP280</b> - is a precision pressure and temperature sensor used to measure atmospheric pressure and temperature during flight.",
+      specsList4: "<b>The SD card module</b> - is responsible for data storage",
+      specsList5: "<b>The LoRa SX1278 module</b> - enables long-range wireless communication between the CanSat and the ground station.",
+      specsList6: "<li>For the secondary mission:</li>",
+      specsList7: "<b>The GY-87 (HW-290) sensor module</b> integrates an accelerometer, gyroscope, magnetometer, and barometer. It is used to measure flight parameters such as acceleration, angular velocity, and magnetic field strength.",
+      specsList8: "<b>Coil (Induction Sensor)</b> - A copper coil will be used to detect voltage induced by the Earth’s magnetic field during the CanSat’s motion.",
+      specsList9: "<b>The ADS1115 (Optional)</b> - is a high-resolution analog-to-digital converter (ADC). It may be used if tests show that the ESP32’s internal ADC range is insufficient. This module will measure the small voltage induced in the coil by the Earth’s magnetic field.",
+      
       teamTitle: "Team Luft-Biksa",
       subAG: "Team leader",
       subDG: "3D Printing",
@@ -206,11 +236,17 @@
       subAB: "Programmer",
       subPM: "Radio comunication",
       subNP: "Social Media management",
+      
       galleryTitle: "Gallery",
+      
       newsTitle: "News",
       StartNews: "Project Launch",
-      StartDate: "25 September 2025",
-      newsItemText: "We’ve started work on the Luft-Biksa CanSat project! The goal is to measure temperature, pressure, and Earth's magnetic field strength.",
+      StartDate1: "25 september 2025",
+      newsStartText: "We’ve started work on the Luft-Biksa CanSat project! The goal is to measure temperature, pressure, and Earth's magnetic field strength.",
+      Test1News: "Primary mission test",
+      Test1Date: "7 october 2025",
+      newsTest1Text: "We have conducted the first successful test of the primary mission.",
+      
       footerText: "© " + new Date().getFullYear() + " Luft-Biksa Team — All rights reserved"
     };
 
